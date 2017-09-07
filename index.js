@@ -36,19 +36,24 @@ message:"",
 time:1234567
 } 
 */
-var messageThread = [];
+var messageThread = [
+  {
+    from: "",
+    message: "Boldog Szülinapot!"
+  }
+];
 
 io.on("connection", function(socket) {
   console.log(io.sockets.clients());
   socket.emit("messageThread", messageThread);
   socket.on("message", function(msg) {
     io.sockets.emit("message", {
-      from: "a",
+      from: "",
       message: msg,
       time: Date()
     });
     messageThread.push({
-      from: "a",
+      from: "",
       message: msg,
       time: Date()
     });

@@ -1,31 +1,64 @@
 import React, { Component } from "react";
 import Message from "./Message";
 import io from "socket.io-client";
-
 class Messenger extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { focused: true, ISaw: false, seen: true };
     this.socket = io();
+    var self = this;
   }
   componentDidMount() {
     var self = this;
+    window.onfocus = _ => {
+      self.setState({ focused: true });
+      self.socket.emit("seen");
+      self.setState({ ISaw: true });
+      document.title = "Greenie Chat";
+      clearInterval(self.alertInterval);
+    };
+    window.onblur = _ => {
+      self.setState({ focused: false });
+    };
     this.socket.on("messageThread", function(messageThread) {
-      console.log(messageThread);
+      self.props.loadMessages(messageThread);
     });
     this.socket.on("message", function(message) {
+      var first = "New message (1)";
+      var second = "Greenie Chat";
+      self.alertInterval = setInterval(_ => {
+        if (document.title == first) {
+          document.title = second;
+        } else {
+          document.title = first;
+        }
+      }, 1000);
+
+      /* later */
+
+      self.setState({ ISaw: false });
       self.props.newMessage(message);
+      if (self.state.focused) {
+        self.socket.emit("seen");
+        self.setState({ ISaw: true });
+        document.title = "Greenie Chat";
+        clearInterval(self.alertInterval);
+      }
     });
     this.socket.on("typing", function(typing) {
       self.props.typing(typing);
     });
+    this.socket.on("seen", function() {
+      self.setState({ seen: true });
+    });
   }
   sendMessage() {
-    console.log(this.message.value);
     this.socket.emit("message", this.message.value);
+    this.setState({ seen: false });
+    this.message.value = "";
+    this.socket.emit("typing", false);
   }
   typing() {
-    console.log("okok");
     if (this.message.value.length > 0) {
       this.socket.emit("typing", true);
     } else {
@@ -38,8 +71,8 @@ class Messenger extends Component {
         {this.props.messages.map((val, ind) => {
           return <Message key={ind} from={val.from} message={val.messages} />;
         })}
-        {this.props.typing && <div>typing</div>}
-        {this.props.seen && <div>seen</div>}
+        {this.props.isTyping && <div>typing</div>}
+        {this.state.seen && <div>seen</div>}
         <hr />
         <div className="row">
           <div className="col-xs-10">
@@ -48,6 +81,12 @@ class Messenger extends Component {
               className="form-control"
               ref={message => (this.message = message)}
               onChange={_ => this.typing()}
+              onKeyDown={e => {
+                console.log(e.keyCode);
+                if (e.keyCode == 13) {
+                  this.sendMessage();
+                }
+              }}
             />
           </div>
           <div className="col-xs-2">

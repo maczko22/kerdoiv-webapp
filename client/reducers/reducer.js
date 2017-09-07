@@ -1,6 +1,7 @@
 import { TEST_ACTION } from "../actions/actionList";
 import { NEW_MESSAGE } from "../actions/actionList";
 import { TYPING } from "../actions/actionList";
+import { LOAD_MESSAGES } from "../actions/actionList";
 import { fromJS } from "immutable";
 const initialState = fromJS({
   typing: false,
@@ -9,26 +10,6 @@ const initialState = fromJS({
     {
       from: "a",
       message: "asdasd"
-    },
-    {
-      from: "b",
-      message: "asdasd"
-    },
-    {
-      from: "b",
-      message: "google.com"
-    },
-    {
-      from: "a",
-      message: "http://google.com"
-    },
-    {
-      from: "b",
-      message: "www.youtube.com"
-    },
-    {
-      from: "b",
-      message: "www.youtube.com"
     }
   ]
 });
@@ -42,6 +23,10 @@ const reducer = (state = initialState, action) => {
   if (action.type == TYPING) {
     console.log(action.typing);
     return state.set("typing", action.typing);
+  }
+  if (action.type == LOAD_MESSAGES) {
+    console.log("blabla", action.messages);
+    return state.set("messages", fromJS(action.messages));
   }
 
   return state;

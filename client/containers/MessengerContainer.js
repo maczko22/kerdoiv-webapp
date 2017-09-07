@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import App from "../components/App";
 import { newMessage } from "../actions/actions";
 import { typing } from "../actions/actions";
+import { loadMessages } from "../actions/actions";
 import Messenger from "../components/Messenger";
 import { toJS } from "immutable";
 
@@ -23,11 +24,10 @@ const mapStateToProps = state => {
   }
 
   formattedMessages.push(JSON.parse(JSON.stringify(groupedMessages)));
-  console.log(state.get("typing"));
+  console.log("formattedMessages", formattedMessages);
   return {
     messages: formattedMessages,
-    typing: state.get("typing"),
-    seen: state.get("seen")
+    isTyping: state.get("typing")
   };
 };
 
@@ -36,8 +36,11 @@ const mapDispatchToProps = dispatch => {
     newMessage: message => {
       dispatch(newMessage(message));
     },
+    loadMessages: message => {
+      dispatch(loadMessages(message));
+    },
     typing: message => {
-      dispatch(newMessage(message));
+      dispatch(typing(message));
     }
   };
 };
