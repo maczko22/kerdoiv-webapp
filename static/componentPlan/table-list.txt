@@ -1,0 +1,3 @@
+<search component>
+line component with table data and view button
+<pagination>

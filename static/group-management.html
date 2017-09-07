@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+    </head>
+    <style>
+        body{
+            margin-top: 50px;
+        }
+        .content{
+            margin: 15px;
+        }
+        .group-item{
+            border-style: solid;
+            border-width: thin;
+            border-radius: 12%;
+            padding: 4px;
+            cursor: pointer;
+            background-color: #F5F5F5;
+        }
+        .group-item:hover{
+            background-color: #299FFF;
+        }
+        .jumbotron{
+            padding: 0px !important;
+            background: #F5F5F5;
+            
+        }
+        .group-well{
+            margin-bottom: 0px;
+            margin-top: 1px;
+            background-color: #fff;
+        }
+        .myButton{
+            margin-top:-6px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <body>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./tablelist.html">ZSALABÁZTUCS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="./tablelist.html">Table List</a></li>
+             <li><a href="./user-management.html">User Management</a></li>
+             <li class="active"><a href="#">Group Management</a></li>
+             <li><a href="./table-management.html">Table Management</a></li>
+             <li><a href="./profile.html">Profile</a></li>
+             <li><a style="color:red" href="./login.html">Logout</a></li>
+           </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <ol class="breadcrumb">
+                    <li><a href="#">Admin</a></li>
+                    <li class="active">Group Management</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-xs-4 col-md-offset-3">    
+                <input class="form-control" id="usersearch" type="text" placeholder="Search by...">
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control">"
+                <option>Groupname</option>
+                <option>Username</option>
+                <option>Tablename</option>
+            </select>
+            </div>
+            <div class="col-xs-3 ">
+                <button class="btn btn-success">Search</button>
+            </div>
+            
+
+
+        </div>
+      <div class="jumbotron">
+            <div class="row">
+                <div class="col-xs-4">
+                    <p class="text-center"><b>Groups:</b></p>
+                </div>
+                <div class="col-xs-8">
+                    <p class="text-center"><b>Information:</b></p>
+                </div>
+                 
+            <div class="col-xs-4">
+                <div class="list-group-item">Group name: <b>Bélukák</b> <br>Group ID: <b>001</b></div>
+                <div class="list-group-item">Group name: <b>Janitors</b> <br>Group ID: <b>002</b></div>
+                <div class="list-group-item">Group name: <b>Zookeepers</b> <br>Group ID: <b>003</b></div>
+                <div class="list-group-item">Group name: <b>Engineers</b> <br>Group ID: <b>004</b></div>
+                <div class="list-group-item">Group name: <b>Mothers</b> <br>Group ID: <b>005</b></div>
+                <div class="list-group-item">Group name: <b>Fathers</b> <br>Group ID: <b>006</b></div>
+                <div class="list-group-item">Group name: <b>Siblings</b> <br>Group ID: <b>007</b></div>
+                <div class="list-group-item">Group name: <b>Relatives</b> <br>Group ID: <b>008</b></div>
+                <div class="list-group-item">Group name: <b>Bosses</b> <br>Group ID: <b>009</b></div>
+                <div class="list-group-item">Group name: <b>CEO</b> <br>Group ID: <b>010</b></div>
+                <div class="list-group-item">Group name: <b>Management</b> <br>Group ID: <b>011</b></div>
+                <div class="list-group-item">Group name: <b>Programmers</b> <br>Group ID: <b>012</b></div>
+            </div>  
+            <div class="col-xs-8">
+                <div class="well group-well">
+                    <b>Users in group: 239 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 302 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 4 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 444 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 99 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 560 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 87 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 872 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 66 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 341 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                  </div>
+                <div class="well group-well">
+                    <b>Users in group: 998 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 41 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 231 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 33 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 651 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 111 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 239 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+                <div class="well group-well">
+                    <b>Users in group: 239 </b>
+                    <b style="margin-left:150px">Tables affected by this group: 21 </b>
+                    <a href="./admin-group-editor.html" ><img style="float: right"src="./images/ic_arrow_forward_black_24dp_1x.png"></a>
+                </div>
+            </div>
+          </div>
+        </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#"><b>Previous</b></a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><b>Next</b></a></li>
+                        </ul>
+                
+                    </nav>
+            </div>
+        </div>
+    </div>
+     <footer class="footer" style="background-color:#222">
+        <div class="container">
+            <p>Footer content here.</p>
+        </div>
+    </footer>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+.messenger {
+  background-color: #d6d0d0;
+  width: 800px;
+  margin: auto;
+}
+.singleMessage {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.message {
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: inline-block;
+  border-radius: 30px;
+  text-align: left;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+.own_message_container {
+  text-align: right;
+}
+.another_message_container {
+  text-align: left;
+}
+.own_message_container .message {
+  background-color: #9cf69c;
+}
+.another_message_container .message {
+  background-color: #8daae3;
+}

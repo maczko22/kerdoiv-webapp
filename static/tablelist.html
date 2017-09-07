@@ -1,0 +1,247 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+    </head>
+    <style>
+        body{
+            margin-top: 50px;
+        }
+        .footer {
+        width: 100%;
+        height: 30px;
+        background-color: #f5f5f5;
+        }
+        .content{
+            margin: 15px;
+            margin-top:50px;
+        }
+        .marginabove{
+            margin-top:30px;
+            
+        }
+        .listastyle{
+            background: #FFC901;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 24;
+            line-height: 1.1;
+            color: #090948;
+            cursor:pointer;
+        }
+        .elougro{
+            background: #424242;
+            color:white;
+            height: 200px;
+        }
+        .gomb{
+            margin-top:15px;
+            margin-bottom: 10px;
+        }
+        .listastyle:hover{
+            background: #d3a80c;
+        }
+        .metadata{
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 18;
+            color: #090948;
+            margin-left: 60px;
+        }
+
+    </style>
+    <body>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./tablelist.html">ZSALABÁZTUCS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+             <li class="active"><a href="#">Table List</a></li>
+             <li><a href="./user-management.html">User Management</a></li>
+             <li><a href="./group-management.html">Group Management</a></li>
+             <li><a href="./table-management.html">Table Management</a></li>
+             <li><a href="./profile.html">Profile</a></li>
+             <li ><a style="color:red" href="./login.html">Logout</a></li>
+           </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /nav vege -->
+
+    <div class="container">
+        <div class="row content">
+            <div class="col-xs-4 col-xs-offset-4">    
+                <input class="form-control" id="usersearch" type="text" placeholder="Search tables...">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-success">Search</button>
+            </div>
+        </div>
+        <!-- /tablelist kezdete -->
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table1')">Table 1
+                <span class="text-center metadata">Coloumns: 3200 Rows: 2345 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table1" class="toggleMe well elougro col-md-offset-2">
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum tenetur possimus nobis, quisquam, quibusdam iure harum, mollitia maiores nemo vitae sit in sequi accusantium nostrum suscipit eligendi pariatur ullam saepe?
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table2')">Table 2
+                <span class="text-center metadata">Coloumns: 2000 Rows: 444 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table2" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto dolores totam, praesentium odit accusamus reprehenderit doloribus dicta repellendus, magnam ad, ea alias eum! Necessitatibus fuga ad provident esse, voluptatem minima!
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table3')">Table 3
+                <span class="text-center metadata">Coloumns: 16 Rows: 555 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table3" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe neque corrupti provident et esse tempora repudiandae debitis aliquam vitae, dolor, quae, vel deserunt dignissimos harum fugit voluptas. Tenetur, cupiditate, debitis.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table4')">Table 4
+                <span class="text-center metadata">Coloumns: 212 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table4" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores consequatur, debitis laborum molestiae, sed harum laudantium impedit dolores itaque quos! Rem numquam vero repudiandae voluptatum nesciunt voluptatem. Vel maiores, iusto.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table5')">Table 5
+                <span class="text-center metadata">Coloumns: 700 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table5" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque sed recusandae cum aperiam, sequi, a est autem consectetur numquam totam ducimus aliquid molestiae natus eos fugiat quibusdam, magni ipsam? Voluptatem!
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table6')">Table 6
+                <span class="text-center metadata">Coloumns: 2 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table6" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi nulla consequatur nostrum, excepturi quas libero harum consequuntur doloremque omnis, maiores! Quaerat quis ad at iste cupiditate veritatis esse delectus architecto.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table7')">Table 7
+                <span class="text-center metadata">Coloumns: 11 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table7" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia pariatur modi sint labore ducimus rem nobis. Eaque qui, corporis incidunt dolor maxime, possimus perspiciatis facilis maiores modi quia excepturi animi.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table8')">Table 8
+                <span class="text-center metadata">Coloumns: 99 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table8" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae unde laudantium incidunt pariatur nulla, iste nemo ad repudiandae, corporis enim excepturi officiis reprehenderit similique, repellat veniam sint, nisi mollitia accusantium!
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a>
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table9')">Table 9
+                <span class="text-center metadata">Coloumns: 150 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table9" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit cumque sunt repudiandae error,
+                minus eos magni deserunt vero excepturi suscipit, delectus, mollitia, officia ex laboriosam ad? Nesciunt, 
+                voluptate laudantium vel. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus aliquam minima 
+                eligendi incidunt dolorum labore voluptatem odio quod sed veniam? At, repellendus, odit. Dolor, voluptatum odio,
+                 ipsam quibusdam commodi cumque.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table10')">Table 10
+                <span class="text-center metadata">Coloumns: 300 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table10" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, ipsum, mollitia reprehenderit nihil
+                doloremque, sunt quo maxime similique molestias voluptatem rem aspernatur. Deserunt sit ea voluptatum aut quod aperiam, repellat! Et deserunt repellendus obcaecati facilis aspernatur, numquam ab porro ipsam, cumque aperiam animi perspiciatis ullam, maxime quisquam illo corporis laborum placeat at.
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+
+        <div class="col-xs-8 col-xs-offset-2 marginabove">
+            <div class="well listastyle" onclick="toggleIt('table11')">Table 11
+                <span class="text-center metadata">Coloumns: 400 Rows: 12312 Last modified: 2017.09.01 </span>
+            </div>
+            <div id = "table11" class="toggleMe well elougro col-md-offset-2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, molestias architecto nesciunt eaque voluptas quia quas, quo eligendi numquam aperiam quidem possimus tempore, quae! Error possimus, culpa molestias! Sit, voluptatibus!
+            </div>
+        </div>
+        <div class="col-xs-2 marginabove">
+            <a href="./tableView.html" class="gomb btn btn-primary">View</a> 
+        </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#"><b>Previous</b></a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><b>Next</b></a></li>
+                        </ul>
+                
+                    </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- /footer -->
+     <footer class="footer" style="background-color:#222">
+      <div class="container">
+        <p>Footer content here.</p>
+      </div>
+    </footer>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>    
+        $(".toggleMe").hide();
+            function toggleIt(tablename){
+                $("#"+tablename).slideToggle();
+            }
+    </script>
+    </body>
+</html>

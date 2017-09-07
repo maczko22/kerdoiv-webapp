@@ -1,0 +1,8 @@
+<pagination>
+ROUTING, links ??????
+<table comp>
+    <settings with gear/>
+    <header-sort-visibility>
+    <search-input>
+    <edit-delete>
+</table comp>
