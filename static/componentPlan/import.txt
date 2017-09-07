@@ -1,1 +1,0 @@
-file opener button, text blob, one component

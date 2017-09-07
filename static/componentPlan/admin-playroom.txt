@@ -1,3 +1,0 @@
-2 table components with individual search components
-1 statless profile/data component
-pagination component

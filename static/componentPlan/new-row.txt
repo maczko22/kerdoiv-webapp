@@ -1,3 +1,0 @@
-<newRow component>
-    every input is a component -> gets type in prop
-</newRow component>

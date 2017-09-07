@@ -1,1 +1,0 @@
-one state less component with love

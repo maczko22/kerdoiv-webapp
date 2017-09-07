@@ -1,3 +1,0 @@
-<search component options="email, groups, username">
-<table component>
-<pagination>
