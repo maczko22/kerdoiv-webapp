@@ -55,8 +55,14 @@ var users = {
   Greenie: ""
 };
 app.post("/", (req, res) => {
+  res.json({
+    a: req.headers["x-real-ip"],
+    b: req.connection.remoteAddress
+  });
+  return;
   if (req.body.username == "HerrTopi" && req.body.password == "admin") {
     users.HerrTopi = req.headers["x-real-ip"] || req.connection.remoteAddress;
+
     res.sendFile(path.join(__dirname, "/public", "index.html"));
     return;
   } else if (req.body.username == "Greenie" && req.body.password == "admin") {
