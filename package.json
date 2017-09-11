@@ -21,6 +21,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-router": "^2.1.2",
     "socket.io": "^2.0.3",
@@ -30,6 +32,9 @@
     "webpack-hot-middleware": "^2.18.2",
     "webpack-preset": "^0.2.0",
     "webpack-preset-babel": "^0.2.0",
-    "webpack-preset-babel-stage-2": "^0.2.0"
+    "webpack-preset-babel-stage-2": "^0.2.0",
+    "mongodb": "*",
+    "body-parser": "*",
+    "mongoose": "*"
   }
 }

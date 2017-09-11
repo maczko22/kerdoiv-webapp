@@ -4,28 +4,37 @@ import io from "socket.io-client";
 class Messenger extends Component {
   constructor(props) {
     super(props);
-    this.state = { focused: true, ISaw: false, seen: true };
-    this.socket = io();
+    this.state = { focused: true, ISaw: false, seen: false };
     var self = this;
   }
+  updateScroll() {
+    var element = document.getElementById("messenger");
+    element.scrollTop = element.scrollHeight;
+  }
   componentDidMount() {
+    this.socket = io();
     var self = this;
     window.onfocus = _ => {
       self.setState({ focused: true });
       self.socket.emit("seen");
       self.setState({ ISaw: true });
-      document.title = "Greenie Chat";
+      document.title = "Iris69 Chat";
       clearInterval(self.alertInterval);
     };
     window.onblur = _ => {
       self.setState({ focused: false });
     };
+    this.socket.on("user", function(user) {
+      self.props.setUser(user);
+    });
     this.socket.on("messageThread", function(messageThread) {
       self.props.loadMessages(messageThread);
+
+      self.updateScroll();
     });
     this.socket.on("message", function(message) {
       var first = "New message (1)";
-      var second = "Greenie Chat";
+      var second = "Iris69 Chat";
       self.alertInterval = setInterval(_ => {
         if (document.title == first) {
           document.title = second;
@@ -41,9 +50,10 @@ class Messenger extends Component {
       if (self.state.focused) {
         self.socket.emit("seen");
         self.setState({ ISaw: true });
-        document.title = "Greenie Chat";
+        document.title = "Iris69 Chat";
         clearInterval(self.alertInterval);
       }
+      self.updateScroll();
     });
     this.socket.on("typing", function(typing) {
       self.props.typing(typing);
@@ -67,9 +77,16 @@ class Messenger extends Component {
   }
   render() {
     return (
-      <div className="messenger">
+      <div id="messenger" className="messenger">
         {this.props.messages.map((val, ind) => {
-          return <Message key={ind} from={val.from} message={val.messages} />;
+          return (
+            <Message
+              key={ind}
+              from={val.from}
+              message={val.messages}
+              user={this.props.user}
+            />
+          );
         })}
         {this.props.isTyping && <div>typing</div>}
         {this.state.seen && <div>seen</div>}
@@ -94,7 +111,7 @@ class Messenger extends Component {
               onClick={_ => this.sendMessage()}
               className="btn btn-success form-control"
             >
-              Send
+              Send {this.props.user}
             </button>
           </div>
         </div>

@@ -31,7 +31,7 @@ class Message extends Component {
     );
   }
   messageClass() {
-    if (this.props.from == "a") {
+    if (this.props.from == this.props.user) {
       return "own_message_container";
     }
     return "another_message_container";

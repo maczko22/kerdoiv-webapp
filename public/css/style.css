@@ -1,7 +1,10 @@
 .messenger {
   background-color: #d6d0d0;
-  width: 800px;
+  width: 900px;
   margin: auto;
+  height: 800px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 .singleMessage {
   padding-top: 10px;
@@ -28,4 +31,16 @@
 }
 .another_message_container .message {
   background-color: #8daae3;
+}
+body {
+  background-color: #89f442;
+}
+
+.login {
+  margin-top: 5%;
+}
+
+.titlemessage {
+  color: green;
+  font-size: 150px;
 }
