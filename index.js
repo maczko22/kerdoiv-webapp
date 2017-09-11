@@ -78,8 +78,12 @@ app.get("/delete_all_messages", (req, res) => {
   });
 });
 app.get("/", (req, res) => {
-  console.log(users.HerrTopi, users.HerrTopi == req.connection.remoteAddress);
-  if (users.HerrTopi != "" && users.HerrTopi == req.connection.remoteAddress) {
+  var uerel = req.headers["x-real-ip"] || req.connection.remoteAddress;
+  if (users.HerrTopi != "" && users.HerrTopi == uerel) {
+    res.sendFile(path.join(__dirname, "/public", "index.html"));
+    return;
+  }
+  if (users.Greenie != "" && users.Greenie == uerel) {
     res.sendFile(path.join(__dirname, "/public", "index.html"));
     return;
   }
