@@ -24,6 +24,9 @@ class Messenger extends Component {
     window.onblur = _ => {
       self.setState({ focused: false });
     };
+    this.socket.on("test", function(test) {
+      console.log(test);
+    });
     this.socket.on("user", function(user) {
       self.props.setUser(user);
     });

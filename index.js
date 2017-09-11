@@ -55,14 +55,8 @@ var users = {
   Greenie: ""
 };
 app.post("/", (req, res) => {
-  res.json({
-    a: req.headers["x-real-ip"],
-    b: req.connection.remoteAddress
-  });
-  return;
   if (req.body.username == "HerrTopi" && req.body.password == "admin") {
     users.HerrTopi = req.headers["x-real-ip"] || req.connection.remoteAddress;
-
     res.sendFile(path.join(__dirname, "/public", "index.html"));
     return;
   } else if (req.body.username == "Greenie" && req.body.password == "admin") {
@@ -116,7 +110,10 @@ var getuser = socket => {
 };
 var lastMessenger = "";
 io.on("connection", function(socket) {
-  console.log(socket.handshake.headers.referer, socket.handshake.address);
+  socket.emit("test", {
+    users: users,
+    handshake: socket.handshake.address
+  });
   if (users.HerrTopi == socket.handshake.address) {
     socket.emit("user", "HerrTopi");
   } else if (users.Greenie == socket.handshake.address) {
