@@ -3,9 +3,7 @@ import App from "../components/App";
 import { doMagic } from "../actions/actions";
 
 const mapStateToProps = state => {
-  return {
-    test: state.get("test")
-  };
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
