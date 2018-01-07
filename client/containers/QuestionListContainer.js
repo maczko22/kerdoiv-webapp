@@ -10,8 +10,8 @@ const mapStateToProps = state => {
         teachers: ['Pista', 'Marika', 'Faszúr', 'Faszfej', 'Puncinő']
       },
       {
-        name: 'hungarian',
-        displayName: 'Magyar',
+        name: 'asd',
+        displayName: 'Fasztudja',
         teachers: ['Pista', 'Marika', 'Faszúr', 'Faszfej', 'Puncinő']
       },
       {
@@ -19,10 +19,9 @@ const mapStateToProps = state => {
         displayName: 'Magyar',
         teachers: ['Pista', 'Marika', 'Faszúr', 'Faszfej', 'Puncinő']
       },
-      { name: 'physics', displayName: 'Fizika' },
       {
-        name: 'hungarian',
-        displayName: 'Magyar',
+        name: 'physics',
+        displayName: 'Fizika',
         teachers: ['Pista', 'Marika', 'Faszúr', 'Faszfej', 'Puncinő']
       },
       {

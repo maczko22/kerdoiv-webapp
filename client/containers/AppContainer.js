@@ -1,17 +1,12 @@
-import { connect } from "react-redux";
-import App from "../components/App";
-import { doMagic } from "../actions/actions";
+import { connect } from 'react-redux';
+import App from '../components/App';
 
 const mapStateToProps = state => {
   return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    doMagic: message => {
-      dispatch(doMagic(message));
-    }
-  };
+  return {};
 };
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);

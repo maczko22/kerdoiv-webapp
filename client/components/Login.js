@@ -12,12 +12,16 @@ class Login extends Component {
     if (this.state.username === '' || this.state.password === '') {
       alert('Valmelyik field üres!');
     } else {
+      const user = {
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      this.props.sendLogin(user);
     }
   }
   inputChange(type, event) {
-    this.setState({ [type]: event.target.value }, () =>
-      console.log('megváltozott:', this.state)
-    );
+    this.setState({ [type]: event.target.value });
   }
   render() {
     return (

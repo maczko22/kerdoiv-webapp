@@ -1,6 +1,7 @@
-import { TEST_ACTION } from '../actions/actionList';
+import { LOGIN_USER } from '../actions/actionList';
+import initialState from './initial';
 
-const reducer = (state = {}, action) => {
+const reducer = (state = initialState, action) => {
   return state;
 };
 

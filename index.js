@@ -1,13 +1,15 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const path = require("path");
+const path = require('path');
+const bodyParser = require('body-parser');
+const mockData = require('./mock/index.js');
 
 //react hot reload
-if (process.env.NODE_ENV != "production") {
-  const config = require("./webpack.config.dev.js");
-  const webpack = require("webpack");
-  const webpackDevMiddleware = require("webpack-dev-middleware");
-  const webpackHotMiddleware = require("webpack-hot-middleware");
+if (process.env.NODE_ENV != 'production') {
+  const config = require('./webpack.config.dev.js');
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
 
   const compiler = webpack(config);
   app.use(
@@ -19,11 +21,27 @@ if (process.env.NODE_ENV != "production") {
   app.use(webpackHotMiddleware(compiler));
 }
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public", "index.html"));
-});
-app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Listening on :" + (process.env.PORT || 3000));
+app.post('/login', (req, res) => {
+  const { username = '', password = '' } = req.body;
+  res.json({
+    success: true
+  });
+});
+
+app.get('/kerdoiv/:id', (req, res) => {
+  const { id } = req.params;
+  console.log(`Ez a kérdőív kell: ${id}`);
+  res.json(mockData);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public', 'index.html'));
+});
+app.use(express.static('public'));
+
+app.listen(process.env.PORT || 3000, function() {
+  console.log('Listening on :' + (process.env.PORT || 3000));
 });

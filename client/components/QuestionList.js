@@ -1,12 +1,40 @@
 import React, { Component } from 'react';
-import Questionnaire from './Questionnaire'
+import Questionnaire from './Questionnaire';
 
 class QuestionList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      open: null
+    };
+  }
+  toggleItem(ind) {
+    if (this.state.open === ind) {
+      this.setState({ open: null });
+      return;
+    }
+    this.setState({ open: ind });
+  }
+  getItem(item, ind) {
+    return (
+      <div
+        onClick={e => this.toggleItem(ind)}
+        key={ind}
+        className={`card subject ${this.state.open === ind ? 'open' : ''}`}
+      >
+        <div>
+          <span>{item.displayName}</span>
+          <button className="btn" style={{ float: 'right', cursor: 'pointer' }}>
+            Tovább
+          </button>
+        </div>
+      </div>
+    );
+  }
   render() {
     return (
-      <div>
-         {this.props.types.map(type =>
-         )} 
+      <div className="subjects-landing-page">
+        {this.props.types.map((item, ind) => this.getItem(item, ind))}
       </div>
     );
   }
