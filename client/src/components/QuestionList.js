@@ -9,9 +9,7 @@ class QuestionList extends Component {
         };
     }
 
-    componentDidMount() {
-        if (this.props.fetchQL) this.props.fetchQL();
-    }
+    componentDidMount() {}
 
     toggleItem(ind) {
         if (this.state.open === ind) {
@@ -23,6 +21,7 @@ class QuestionList extends Component {
     getItem(item, ind) {
         return (
             <div
+                key={ind}
                 onClick={e => this.toggleItem(ind)}
                 key={ind}
                 className={`card subject ${
@@ -42,10 +41,13 @@ class QuestionList extends Component {
         );
     }
     render() {
-        console.log(this.props);
         return (
             <div className="subjects-landing-page">
-                {this.props.types.map((item, ind) => this.getItem(item, ind))}
+                {this.props.types
+                    ? this.props.types.map((item, ind) =>
+                          this.getItem(item, ind)
+                      )
+                    : ''}
             </div>
         );
     }

@@ -1,3 +1,24 @@
+body {
+    margin: 0;
+    background-color: #eeeeee;
+}
+html,
+body,
+#app {
+    box-sizing: border-box;
+    height: 100%;
+}
+#app > div {
+    height: 90%;
+}
+
+.welcome {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-form {
     margin-top: 50px;
 }
@@ -17,9 +38,6 @@
 .subjects-landing-page {
     padding: 70px;
 }
-body {
-    background-color: #eeeeee;
-}
 
 .card-block {
     padding: 10px;
@@ -31,4 +49,38 @@ body {
 }
 .question {
     margin: 2px 0 2px 0;
+}
+
+.footer {
+    bottom: 0;
+    height: 20px;
+    background-color: #343a40;
+    left: 0;
+    position: fixed;
+    transition: transform 0.2s;
+    width: 100%;
+}
+.login-errorbox {
+    background: #dc3545;
+    text-align: center;
+    border-radius: 15px;
+    width: 90%;
+    color: #f8f9fa;
+    margin: 10px auto;
+    font-weight: bold;
+}
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.container-fluid {
+    height: 100%;
+}
+
+.card-404 {
+    padding: 10px;
+    text-align: center;
+    width: 30%;
 }

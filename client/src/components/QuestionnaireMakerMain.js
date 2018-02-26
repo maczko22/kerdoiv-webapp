@@ -42,9 +42,11 @@ export default class QuestionnaireMakerMain extends Component {
         return (
             <div className="row">
                 <div className="col-sm-4">
-                    {questionnaires.map((questionnaire, ind) =>
-                        this.makeQuestionnaire(questionnaire, ind)
-                    )}
+                    {questionnaires
+                        ? questionnaires.map((questionnaire, ind) =>
+                              this.makeQuestionnaire(questionnaire, ind)
+                          )
+                        : ''}
                 </div>
             </div>
         );

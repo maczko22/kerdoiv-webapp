@@ -1,20 +1,22 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
     devtool: 'sourcemap',
-    entry: [
-        './client/client.js'
-    ],
+    entry: ['./src/client.js'],
+
     output: {
-        path: require("path").resolve("./public/js/"),
+        path: require('path').resolve('./public/js/'),
         filename: 'bundle.js',
         publicPath: '/'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json']
     },
     plugins: [
         new webpack.DefinePlugin({
             __DEV__: JSON.stringify(false),
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+                NODE_ENV: JSON.stringify('production')
             }
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -39,7 +41,7 @@ module.exports = {
             keep_fnames: true,
             comments: false,
             sourceMap: false
-        }),
+        })
     ],
     module: {
         loaders: [
@@ -49,7 +51,7 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     babelrc: false,
-                    presets: ['react','es2015'],
+                    presets: ['react', 'es2015']
                 }
             }
         ]

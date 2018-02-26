@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const mockData = require('./mock/index.js');
+const PORT = 3000;
 
 //react hot reload
 if (process.env.NODE_ENV != 'production') {
@@ -43,6 +44,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public', 'index.html'));
 });
 
-app.listen(process.env.PORT || 3000, function() {
-    console.log('Listening on :' + (process.env.PORT || 3000));
+app.listen(PORT, () => {
+    console.log(`Kliens szerver elindult a localhost:${PORT}-on.`);
 });

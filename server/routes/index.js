@@ -1,24 +1,16 @@
-const registerService = require('../service/User/register');
+const userService = require('../service/User/index');
 module.exports = app => {
     app.get('/', (req, res) => {
         res.json({ hello: 'World' });
     });
 
-    app.get('/kerdoiv-lista', (req, res) => {
-        const fakeQL = require('../fakedb/kerdoiv-lista.json');
+    app.get('/questionnaires', (req, res) => {});
 
-        res.json(fakeQL);
-    });
-
-    app.get('/kerdoivek', (req, res) => {
-        const fakeQs = require('../fakedb/kerdoivek.json');
-
-        res.json(fakeQs);
-    });
+    app.get('/kerdoivek', (req, res) => {});
 
     app.post('/register', (req, res) => {
         const { username, password } = req.body;
-        const user = registerService.createUser({ username, password });
+        const user = userService.createUser({ username, password });
 
         user
             .save()
@@ -27,15 +19,13 @@ module.exports = app => {
     });
 
     app.post('/login', (req, res) => {
-        const fakeLogin = require('../fakedb/login.json');
         const { username, password } = req.body.body;
+        const user = userService.findByName(username);
 
-        if (
-            username === fakeLogin.username &&
-            password === fakeLogin.password
-        ) {
+        if (user && user.username === username && user.password === password) {
             res.status(200).json({ success: true, username, password });
         }
+
         res.status(200).json({ success: false, msg: 'Rossz jelszó!' });
     });
 };

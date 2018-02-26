@@ -2,12 +2,9 @@ var webpack = require('webpack');
 
 module.exports = {
     devtool: 'inline-source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        './client/client.js'
-    ],
+    entry: ['webpack-hot-middleware', './src/client.js'],
     output: {
-        path: require("path").resolve("./public/js/"),
+        path: require('path').resolve('./public/js/'),
         filename: 'bundle.js',
         publicPath: '/js/'
     },
@@ -15,6 +12,10 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ],
+    devServer: {
+        hot: true,
+        historyApiFallback: true
+    },
     module: {
         loaders: [
             {
@@ -23,8 +24,8 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     babelrc: false,
-                    presets: ['react', 'react-hmre','stage-2'],
-                plugins: []
+                    presets: ['react', 'react-hmre', 'stage-2'],
+                    plugins: []
                 }
             }
         ]

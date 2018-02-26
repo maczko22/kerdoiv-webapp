@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 
 const mapStateToProps = state => {
-  return {};
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+    return {};
 };
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);

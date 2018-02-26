@@ -1,12 +1,26 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const Questionnaire = mongoose.model('Questionnaire');
 
 module.exports = {
-    createUser(userObj) {
-        const user = new User({
-            username: userObj.username,
-            password: userObj.password
+    /*  {params} 
+        qa      -> questionnaire object
+        user    -> user mongoose model who creates the questionnaire
+        return  -> questionnaire model which can be saved to the database
+     */
+    createQuestionnaire(qa, user) {
+        const questionnaire = new Questionnaire({
+            madeBy: user,
+            title: 'teszt',
+            description: 'asddfasdfsadfsadfsadf',
+            voteCount: 20,
+            questions: [
+                {
+                    title: 'Mit adtak a Rómaiak?',
+                    qType: 'radio',
+                    answerOpts: ['Semmit', 'Heeeh', 'teszt', 'sdgsidgndsgingid']
+                }
+            ]
         });
-        return user;
+        return questionnaire;
     }
 };

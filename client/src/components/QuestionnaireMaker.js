@@ -12,9 +12,13 @@ class QuestionnaireMaker extends Component {
                     <span>Kérdőív készítő</span>
                     <button className="btn btn-sm btn-success">+</button>
                 </div>
-                <QuestionnaireMakerMain
-                    questionnaires={this.props.questionnaires}
-                />
+                {this.props.questionnaires ? (
+                    <QuestionnaireMakerMain
+                        questionnaires={this.props.questionnaires}
+                    />
+                ) : (
+                    ''
+                )}
             </div>
         );
     }
