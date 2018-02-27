@@ -2,7 +2,7 @@ import axios from 'axios';
 import { loginUser, logoutUser } from '../util';
 const API_ENDPOINT = 'http://localhost:8080/';
 
-const API = {
+export const API = {
     get: (endpoint, params) =>
         axios
             .get(`${API_ENDPOINT}${endpoint}`, { params })
@@ -16,12 +16,12 @@ const API = {
 };
 
 function onSuccessfulResponse(res) {
-    return res.status === 200 ? res.data : {};
+    return res.status === 200 ? res.data : null;
 }
 
 function onError(error) {
     console.error(error);
-    return {};
+    return null;
 }
 
 export const Login = {

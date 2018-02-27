@@ -3,9 +3,11 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers/reducer';
-import AppContainer from './containers/AppContainer';
+import App from './components/App';
 import thunkMiddleware from 'redux-thunk';
 import { Login, Questionnaire } from './middleware/index';
+import { isEmpty } from './util/index';
+window.isEmpty = isEmpty;
 
 let store = createStore(
     reducer,
@@ -22,7 +24,7 @@ Questionnaire.getById(10).then(console.log);
 
 render(
     <Provider store={store}>
-        <AppContainer />
+        <App />
     </Provider>,
     document.getElementById('app')
 );

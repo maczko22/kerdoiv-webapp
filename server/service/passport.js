@@ -17,18 +17,26 @@ passport.deserializeUser((id, cb) => {
 });
 
 passport.use(
-    new LocalStrategy((username, password, done) => {
-        User.findOne({ username: username }, (err, user) => {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                return done(null, false, { message: 'Hibás felhasználónév' });
-            }
-            if (user.password !== password) {
-                return done(null, false, { message: 'Hibás jelszó.' });
-            }
-            return done(null, user);
-        });
-    })
+    new LocalStrategy(
+        {
+            usernameField: 'body[username]',
+            passwordField: 'body[password]'
+        },
+        (username, password, done) => {
+            User.findOne({ username: username }, (err, user) => {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    return done(null, false, {
+                        message: 'Hibás felhasználónév'
+                    });
+                }
+                if (user.password !== password) {
+                    return done(null, false, { message: 'Hibás jelszó.' });
+                }
+                return done(null, user);
+            });
+        }
+    )
 );

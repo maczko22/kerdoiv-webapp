@@ -8,15 +8,16 @@ import Welcome from './Welcome';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { isLoggedIn, logoutUser } from '../util/index';
 import history from '../util/history';
+import * as actions from '../actions/actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+    componentDidMount() {
+        this.props.fetchUser();
     }
     render() {
         return (
-            <Router history={history}>
+            <Router>
                 <div>
                     <Navbar logoutUser={logoutUser} isLoggedIn={isLoggedIn} />
                     <div className="container-fluid">
@@ -57,4 +58,4 @@ class App extends Component {
         );
     }
 }
-export default App;
+export default connect(null, actions)(App);

@@ -1,6 +1,12 @@
 import axios from 'axios';
-import { SEND_LOGIN, SAVE_QLLIST, SAVE_QUESTIONNAIRES } from './actionList';
+import {
+    SEND_LOGIN,
+    SAVE_QLLIST,
+    SAVE_QUESTIONNAIRES,
+    FETCH_USER
+} from './actionList';
 import { loginUser } from '../util/index';
+import { API } from '../middleware/index';
 
 export const fetchQs = () => dispatch =>
     axios
@@ -23,3 +29,9 @@ export const saveQuestionnaires = qlList => ({
     type: SAVE_QUESTIONNAIRES,
     data: qlList
 });
+
+export const fetchUser = () => async dispatch => {
+    const res = await API.get('current-user');
+
+    dispatch({ type: FETCH_USER, data: res });
+};

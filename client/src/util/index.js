@@ -13,3 +13,8 @@ export const logoutUser = () => {
 export const isLoggedIn = () => {
     return localStorage.getItem('isLoggedIn');
 };
+
+export const isEmpty = (value, allowEmptyString) =>
+    value == null ||
+    (!allowEmptyString ? value === '' : false) ||
+    (Array.isArray(value) && value.length === 0);

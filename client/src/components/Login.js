@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Login as LoginService } from '../middleware/index';
 import history from '../util/history';
+import { isEmpty } from '../util';
 
 class Login extends Component {
     constructor(props) {
@@ -21,15 +22,16 @@ class Login extends Component {
             };
 
             LoginService.sendCredentials(user).then(data => {
-                if (data.success) {
+                console.log(isEmpty(data));
+                if (!isEmpty(data)) {
                     LoginService.loginUser();
                     history.push('/kerdoiv-lista');
                     return;
                 }
                 this.setState({
-                    error: data.msg,
                     username: '',
-                    password: ''
+                    password: '',
+                    error: 'Hibás felhasználónév/jelszó!'
                 });
             });
         }
