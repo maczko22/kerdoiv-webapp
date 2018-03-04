@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import Question from './Question';
+import { Questionnaire } from '../../middleware/index';
+import history from '../../util/history';
 
 class Form extends Component {
     state = {
-        index: 0,
-        title: '',
-        description: '',
-        questions: {}
+        index: 0
     };
 
     componentDidMount() {
         this.onAddQuestionClick();
     }
 
-    onInputChange(e, target) {
-        this.setState({ [target]: e.target.value }, () => console.log(this.state.questions));
+    onInputChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     deleteQuestion(itemIndex) {
@@ -40,13 +39,63 @@ class Form extends Component {
                 <Question
                     key={i}
                     index={i}
-                    onInputChange={(e, type) => this.onInputChange(e, type)}
+                    onInputChange={(e, type) => this.onInputChange(e)}
                     deleteQuestion={index => this.deleteQuestion(index)}
                 />
             );
         }
 
         return items;
+    }
+
+    sendQuestionnaire() {
+        const newObj = Object.assign({}, this.state);
+        const { title, description, index } = newObj;
+        delete newObj.description;
+        delete newObj.index;
+        delete newObj.title;
+
+        /* TODO :
+            Bug, amit ki kell majd javítani:
+            Ha kiválasztunk egy kérdés típust pl: radio és megadunk értékeket, majd átváltjuk ezt a kérdéstípust
+            mondjuk text-re, akkor az elkészült végső object-ben benne lesznek a radio-value-k is a text value mellett.
+            Fixálni kell!!!
+         */
+        const questions = [];
+        const keys = Object.keys(newObj);
+        for (let qa in newObj) {
+            const [key, questionIndex, valueIndex = -1] = qa.split('_');
+
+            let x = questions[questionIndex] || { answerOpts: [] };
+
+            if (key === 'questionTitle')
+                x.title = newObj[`${key}_${questionIndex}`];
+            else if (key === 'questionType')
+                x.qType = newObj[`${key}_${questionIndex}`];
+            else if (key === 'value' && valueIndex >= 0) {
+                x.answerOpts.push(
+                    newObj[`${key}_${questionIndex}_${valueIndex}`]
+                );
+            } else {
+                x.answerOpts.push(newObj[`${key}_${questionIndex}`]);
+            }
+            questions[questionIndex] = x;
+        }
+
+        const newQuestion = {
+            title,
+            description,
+            questions: [...questions]
+        };
+
+        Questionnaire.create(newQuestion)
+            .then(res => {
+                /* TODO: itt majd el kell lőni egy action-t, ami elmenti a store-ba
+                    az újonnan elkészült kérdőívet, amit a responseból kapunk.
+                */
+                history.push('/kerdoiv-keszites');
+            })
+            .catch(console.error);
     }
     render() {
         return (
@@ -69,8 +118,11 @@ class Form extends Component {
                                         <input
                                             className="form-control"
                                             type="text"
-                                            value={this.state.title}
-                                            onChange={e => this.onInputChange(e, 'title')}
+                                            name="title"
+                                            required
+                                            onChange={e =>
+                                                this.onInputChange(e)
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -90,13 +142,19 @@ class Form extends Component {
                                         <textarea
                                             className="form-control"
                                             placeholder="Add meg a kérdőív leírását"
-                                            onChange={e => this.onInputChange(e, 'description')}
+                                            name="description"
+                                            required
+                                            onChange={e =>
+                                                this.onInputChange(e)
+                                            }
                                         />
                                     </div>
                                     {this.renderQuestions()}
                                     <div className="question-input-card">
                                         <button
-                                            onClick={() => this.onAddQuestionClick()}
+                                            onClick={() =>
+                                                this.onAddQuestionClick()
+                                            }
                                             className="btn btn-warning btn-block"
                                         >
                                             + Új kérdés hozzáadás
@@ -104,7 +162,10 @@ class Form extends Component {
                                     </div>
                                 </div>
                                 <div className="card-footer text-center">
-                                    <button onClick={() => console.log('click')} className="btn btn-success btn-block">
+                                    <button
+                                        onClick={() => this.sendQuestionnaire()}
+                                        className="btn btn-success btn-block"
+                                    >
                                         Elküldés
                                     </button>
                                 </div>

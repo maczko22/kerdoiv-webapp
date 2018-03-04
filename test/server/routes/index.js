@@ -11,7 +11,7 @@ module.exports = app => {
         res.send(subjects);
     });
 
-    app.post('/api/create-subject', async (req, res) => {
+    app.post('/api/create-subject', authMW, async (req, res) => {
         const subject = await subjectService.createSubject({
             name: req.body.subjectName,
             displayName: req.body.displayName
@@ -19,7 +19,7 @@ module.exports = app => {
 
         if (subject) {
             const newSubject = await subject.save();
-            res.json(newSubject);
+            res.status(200).json(newSubject);
         }
         res.status(303).json({ message: 'Nem sikerült új témát hozzáadni!' });
     });
@@ -33,29 +33,33 @@ module.exports = app => {
         res.json({ questionnaires });
     });
 
-    app.post('/api/create-questionnaire', authMW, (req, res) => {
-        console.log(req.user);
-        const userId = req.user;
+    app.post('/api/create-questionnaire', authMW, async (req, res) => {
+        // TODO: Validáció kell ide !!!!
+        const questionnaire = questionnaireService.createQuestionnaire(
+            req.body.body,
+            req.user._id
+        );
+
+        const newQuestionnaire = await questionnaire.save();
+        res.status(200).json(newQuestionnaire);
     });
 
-    app.get('/api/logout', (req, res) => {
+    app.get('/api/logout', authMW, (req, res) => {
         req.logout();
         res.redirect('/');
     });
 
-    app.get('/api/current-user', (req, res) => {
+    app.get('/api/current-user', authMW, (req, res) => {
         console.log('user', req.user._id);
         res.send(req.user._id);
     });
 
-    app.post('/api/register', (req, res) => {
+    app.post('/api/register', async (req, res) => {
         const { username, password } = req.body;
         const user = userService.createUser({ username, password });
 
-        user
-            .save()
-            .then(newUser => res.json(newUser))
-            .catch(console.log);
+        const newUser = await user.save();
+        res.status(200).json(newUser);
     });
 
     app.post('/api/login', passport.authenticate('local'), (req, res) => {

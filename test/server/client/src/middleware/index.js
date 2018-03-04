@@ -5,12 +5,18 @@ const API_ENDPOINT = '/api/';
 export const API = {
     get: (endpoint, params) =>
         axios
-            .get(`${API_ENDPOINT}${endpoint}`)
+            .get(`${API_ENDPOINT}${endpoint}`, { params })
             .then(onSuccessfulResponse)
             .catch(onError),
     post: (endpoint, body) =>
         axios
             .post(`${API_ENDPOINT}${endpoint}`, { body })
+            .then(onSuccessfulResponse)
+            .catch(onError),
+    delete: (endpoint, params) =>
+        axios
+            .delete()
+            .post(`${API_ENDPOINT}${endpoint}`, { params })
             .then(onSuccessfulResponse)
             .catch(onError)
 };
@@ -30,7 +36,9 @@ export const Login = {
 
 export const Questionnaire = {
     getAll: () => API.get('questionnaires'),
-    getById: id => API.get('questionnaire', { id })
+    getById: id => API.get('questionnaire', { id }),
+    create: questionnaire => API.post('create-questionnaire', questionnaire),
+    delete: id => API.delete('questionnaire', { id })
 };
 
 export const Subject = {

@@ -10,16 +10,10 @@ module.exports = {
     createQuestionnaire(qa, userId) {
         const questionnaire = new Questionnaire({
             madeBy: userId,
-            title: 'teszt',
-            description: 'asddfasdfsadfsadfsadf',
-            voteCount: 20,
-            questions: [
-                {
-                    title: 'Mit adtak a Rómaiak?',
-                    qType: 'radio',
-                    answerOpts: ['Semmit', 'Heeeh', 'teszt', 'sdgsidgndsgingid']
-                }
-            ]
+            title: qa.title,
+            description: qa.description,
+            voteCount: qa.voteCount || 0,
+            questions: [...qa.questions]
         });
         return questionnaire;
     },
