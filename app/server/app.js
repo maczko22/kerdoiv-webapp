@@ -18,9 +18,7 @@ mongoose.Promise = global.Promise;
 //DB connection
 mongoose.connect('mongodb://127.0.0.1:27017/kerdoiv', err => {
     if (err) {
-        console.log(
-            `Valami hiba törént a MongoDB szerver csatlakozása közben: ${err}`
-        );
+        console.log(`Valami hiba törént a MongoDB szerver csatlakozása közben: ${err}`);
         return;
     }
     console.log(`
@@ -35,7 +33,7 @@ app.use(bodyParser.json());
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: ['tesa']
+        keys: ['verysecretkey']
     })
 );
 app.use(passport.initialize());
